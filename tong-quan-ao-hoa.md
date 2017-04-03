@@ -2,9 +2,11 @@
 
 ## Mục Lục
 
-### [1.Giới thiệu về ảo hóa] (gioi-thieu)
-### [2. Chức năng và lợi ích của ảo hóa] (chuc-nang)
-### [3. Lựa chọn công nghệ ảo hóa phù hợp] (cong-nghe)
+- [1.Giới thiệu về ảo hóa](#gioi-thieu)
+
+- [2. Chức năng và lợi ích của ảo hóa](#chuc-nang)
+
+- [3. Lựa chọn công nghệ ảo hóa phù hợp](#cong-nghe)
 
 ------
 
