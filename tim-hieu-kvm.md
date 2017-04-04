@@ -19,6 +19,27 @@
 ### <a name = ""></a> 1. Khái niệm và vai trò.
 
 - KVM (Kernel-based virtual machine) là giải pháp ảo hóa cho hệ thống linux trên nền tảng phần cứng x86 có các module mở rộng hỗ trợ ảo hóa (Intel VT-x hoặc AMD-V). 
+# Tìm hiểu KVM
+
+## Mục lục
+
+### [1. Khái niệm và vai trò](#vai-tro)
+
+### [2. Cấu trúc](#cau-truc)
+
+### [3. Mô hình triển khai](#mo-hinh)
+
+### [4. Cơ chế hoạt động](#co-che)
+
+### [5. Lab](#lab)
+
+### [6. Tính năng](#tinh-nang)
+
+-------
+
+### <a name = "vai-tro"></a> 1. Khái niệm và vai trò.
+
+- KVM (Kernel-based virtual machine) là giải pháp ảo hóa cho hệ thống linux trên nền tảng phần cứng x86 có các module mở rộng hỗ trợ ảo hóa (Intel VT-x hoặc AMD-V). 
 Về bản chất, KVM không thực sự là một hypervisor có chức năng giải lập phần cứng để chạy các máy ảo. 
 Chính xác KVM chỉ là một module của kernel linux hỗ trợ cơ chế mapping các chỉ dẫn trên CPU ảo (của guest VM) 
 sang chỉ dẫn trên CPU vật lý (của máy chủ chứa VM). 
@@ -37,7 +58,7 @@ Intel và ADM cũng đã cộng tác với dự án. Từ phiên bản 2.6.20, K
 
 <img src="http://i.imgur.com/SRDtP40.png">
 
-### <a name = ""></a> 2. Cấu trúc của KVM
+### <a name = "cau-truc"></a> 2. Cấu trúc của KVM
 
 - Trong kiến trúc KVM, máy ảo là một tiến trình Linux, được lập lịch bởi chuẩn Linux scheduler. 
 Trong thực tế mỗi CPU ảo xuất hiện như là một tiến trình Linux. Điều này cho phép KVM sử dụng tất cả các tính năng của Linux kernel.
@@ -71,8 +92,7 @@ một process trong guest-mode bao gồm cả kernel-mode và user-mode.
   <li>cung cấp API để các tool như virsh có thể giao tiếp và quản lí các VM</li>
   <li>cung cấp chế độ quản lí từ xa an toàn</li>
   </ul>
-
-**Mô hình triển khai**
+### <a name ="mo-hinh"></a> 3. Mô hình triển khai
 - Hình dưới đây mô tả mô hình thực hiện của KVM. Đây là một vòng lặp của các hành động diễn ra để vận hành các máy ảo. 
 Những hành động này được phân cách bằng 3 phương thức chúng ta đã đề cập trước đó: user-mode, kernel-mode, guest-mode.
 
@@ -96,5 +116,6 @@ Hãy tưởng tượng mô phỏng một đĩa cứng và 1 guest đang đọc c
 lập các hoạt động bằng các mô phỏng hành vi của các ổ đĩa cứng và bộ điều khiển nó được kết nối. Để thực hiện các hoạt động đọc, 
 nó đọc các khối tương ứng từ một tập tin lớp và trả về dữ liệu cho guest. Vì vậy, user-mode giả lập I/O có xu hướng xuất hiện một 
 nút cổ chai làm chậm việc thực hiện máy ảo.
+
 
 
