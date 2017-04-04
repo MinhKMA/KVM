@@ -6,27 +6,6 @@
 
 ### [2. Cấu trúc](#cau-truc)
 
-### [3. Cơ chế hoạt động](#co-che)
-
-### [4. Mô hình](#mo-hinh)
-
-### [5. Lab](#lab)
-
-### [6. Tính năng](#tinh-nang)
-
--------
-
-### <a name = ""></a> 1. Khái niệm và vai trò.
-
-- KVM (Kernel-based virtual machine) là giải pháp ảo hóa cho hệ thống linux trên nền tảng phần cứng x86 có các module mở rộng hỗ trợ ảo hóa (Intel VT-x hoặc AMD-V). 
-# Tìm hiểu KVM
-
-## Mục lục
-
-### [1. Khái niệm và vai trò](#vai-tro)
-
-### [2. Cấu trúc](#cau-truc)
-
 ### [3. Mô hình triển khai](#mo-hinh)
 
 ### [4. Cơ chế hoạt động](#co-che)
