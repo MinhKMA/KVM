@@ -164,7 +164,10 @@ Chạy lệnh sau để thêm tài khoản người dùng vào libvirtd group:
 
 `virsh --connect qemu:///system list`
 
+<img src ="http://i.imgur.com/NUNueTd.png">
+
 Một danh sách máy ảo còn trống xuất hiện. Điều này thể hiện mọi thứ đang hoạt động đúng.
+
 - Bước 4: Cấu hình Linux Bridge
 
 Đầu tiên, hãy chạy câu lệnh sau để tạo một Bridge mới:
