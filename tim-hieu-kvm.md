@@ -148,14 +148,13 @@ Nếu bạn sử dụng VMWare, hãy nhớ bật chức năng ảo hóa Intel VT
 
 `sudo apt-get install qemu-kvm libvirt-bin bridge-utils`
 
-Trong đó:
+- Trong đó:
   <ul>
   <li>libvirt-bin: cung cấp libvirt mà bạn cần quản lý qemu và kvm bằng libvirt</li>
   <li>qemu-kvm: Phần phụ trợ cho KVM</li>
-  <li>bridge-utils: chứa một tiện ích cần thiết để tạo và quản lý các thiết bị bridge. 
-  Điều này rất hữu ích trong việc thiết lập hệ thống mạng cho một máy ảo được lưu trữ.</li>
+  <li>bridge-utils: chứa một tiện ích cần thiết để tạo và quản lý các thiết bị bridge.</li>
   </ul>
-
+  
 - Bước 3: Chỉ quản trị viên (root user) và những người dùng thuộc libvirtd group có quyền sử dụng máy ảo KVM. 
 Chạy lệnh sau để thêm tài khoản người dùng vào libvirtd group:
 
