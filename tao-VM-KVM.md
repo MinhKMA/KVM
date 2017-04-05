@@ -2,11 +2,11 @@
 
 ## Mục lục
 
-###  [1. Cài máy ảo bằng virt-install](virt-install)
+###  [1. Cài máy ảo bằng virt-install](#virt-install)
 
-### [2. Cài máy ảo bằng virt-manager](virt-manager)
+### [2. Cài máy ảo bằng virt-manager](#virt-manager)
 
-### [3. Cài máy ảo bằng webvirt](webvirt)
+### [3. Cài máy ảo bằng webvirt](#webvirt)
 
 ---
 
@@ -57,7 +57,6 @@
 
 **Tạo VM bằng cách tải từ trên internet**
 
-  ```sh
   virt-install \
   --name template \
   --ram 2048 \
@@ -69,8 +68,7 @@
   --graphics none \
   --console pty,target_type=serial \
   --location 'http://jp.archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/' \
-  --extra-args 'console=ttyS0,115200n8 serial' ```
-
+  --extra-args 'console=ttyS0,115200n8 serial'
 
 **Những thông số đáng chú ý**
 
@@ -101,15 +99,17 @@
 - --cdrom nơi chứa file ISO để cài đặt
 
 
-### <a name ="virt-manager"> 2. Tạo máy ảo bằng virt-manager </a>
+### <a name ="virt-manager"> 2. Tạo máy ảo bằng virt-manager</a>
 
 - Tiến hành cài đặt công cụ virt-manager để quản lí máy ảo bằng câu lệnh
 
   `apt-install virt-manager`
+  
 
 - Sau khi đã cài đặt virt-manager, tiến hành tải file ISO từ trên mạng internet và để vào thư mục mặc định đó là:
 
   `/var/lib/libvirt/images/`
+  
 
 - Hoặc bạn cũng có thể tải các file image từ internet về và để trong thư mục trên bằng câu lệnh sau:
 
