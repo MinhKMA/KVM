@@ -57,7 +57,7 @@
 
 **Tạo VM bằng cách tải từ trên internet**
 
--  ```sh
+  ```sh
   virt-install \
   --name template \
   --ram 2048 \
@@ -69,10 +69,8 @@
   --graphics none \
   --console pty,target_type=serial \
   --location 'http://jp.archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/' \
-  --extra-args 'console=ttyS0,115200n8 serial'
-  ```
+  --extra-args 'console=ttyS0,115200n8 serial' ```
 
-  ​
 
 **Những thông số đáng chú ý**
 
@@ -101,6 +99,7 @@
 - --location : nơi lưu file cài đặt
 
 - --cdrom nơi chứa file ISO để cài đặt
+
 
 ### <a name ="virt-manager"> 2. Tạo máy ảo bằng virt-manager </a>
 
