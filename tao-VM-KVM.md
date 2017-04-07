@@ -8,6 +8,8 @@
 
 ### [3. Cài máy ảo bằng webvirt](#webvirt)
 
+### [4. Các tùy chọn card mạng trong máy ảo](#card-mang)
+
 ---
 
 
@@ -185,3 +187,57 @@
     <img src="http://i.imgur.com/ouHbPLX.png">
 
   - Nhấn `Begin Installation` để bắt đầu
+  
+  ### <a name ="card-mang"></a> 4. Các tùy chọn card mạng trong máy ảo
+
+Nếu bạn đã quen với VMWare, chắc hẳn bạn sẽ biết trong VMWare có 3 chế độ card mạng đó là Bridge, NAT và Host-only. Tương tự
+ như VMWare, các máy ảo của KVM cũng có 3 tùy chọn card mạng đó là NAT, Public Bridge và Private Bridge.
+
+ #### 1. NAT
+
+ - Đây là cấu hình card mạng mặc định của KVM. Cơ chế NAT sẽ cấp cho mỗi VM một địa chỉ IP theo dải mặc định, nó sẽ hoạt động giống với
+  một chiếc Router, chuyển tiếp các gói tin giữa những lớp mạng khác nhau trên một mạng lớn. Về mặt logic, ta có thể hiểu nó là 1 bridge riêng biệt và
+   nó sẽ giao tiếp với bridge mà card mạng thật kết nối để các máy ảo có thể kết nối ra bên ngoài mạng internet.
+  Chúng ta có thể xem dải mạng mặc định mà cơ chế NAT sẽ cấp cho các máy ảo ở trong file:
+
+  `/var/lib/libvirt/network/default.xml`
+
+  <img src="https://raw.githubusercontent.com/nguyenminh12051997/meditech-thuctap/master/MinhNV/KVM/images/natdhcp.PNG">
+
+  - Các card mạng của máy ảo sẽ được gắn vào 1 bridge mặc định (vibr0), bridge này đã có gateway mặc định, các gói tin của máy ảo sẽ đi qua
+  bridge này trước khi được chuyển tới bridge có kết nối từ card mạng thật để ra ngoài internet.
+
+  #### 2. Public Bridge
+
+  - Chế độ này sẽ cho phép các máy ảo có cùng dải mạng vật lí với card mạng thật. Để có thể làm được điều này, bạn cần thiết lập 1 bridge
+   và cho phép nó kết nối với cổng vật lí của thiết bị thật (eth0).
+
+  - Các bước để cấu hình public bridge:
+    <ul>
+    <li>Sử dụng câu lệnh `brctl addbr Ten_bridge` để tạo một bridge</li>
+    <li>Gán card mạng thật cho bridge đó bằng câu lệnh `brctl addif Ten_bridge Ten_card_mang` .</li>
+    <li>Cấu hình cho card mạng trong file: `/etc/network/interfaces` . 
+        Tại đây, hãy comment các cấu hình của card mạng vật lý và cấu hình lại cho bridge vừa tạo </li>
+    <li>Khởi động lại dịch vụ mạng</li>
+    </ul>
+
+  - Sau khi đã cấu hình public bridge, khi tạo máy ảo, bạn chỉ cần chọn chế độ "Bridge br0" là các máy ảo sẽ tự động được nhận các địa chỉ 
+   ip trùng với dải địa chỉ của card vật lí.
+
+   #### 3. Private Bridge
+
+   - Chế độ này sẽ sử dụng một bridge riêng biệt để các VM giao tiếp với nhau mà không ảnh hưởng tới địa chỉ của KVM host.
+   - Ta có thể tạo ra private bridge bằng cách chỉnh sửa file `/etc/network/interfaces`.
+     Tại đây, bạn sẽ không cần phải comment các cấu hình của card vật lý đồng thời không cần thêm tham số `bridge_ports`
+     cho bridge.
+
+  - Bạn cũng có thể tạo ra private bridge bằng cách sử dụng virt-manager.
+    <ul>
+    <li>Trong phần `Edit`, chọn `Connection Details` -> `Virtual Networks`</li>
+    <li>Chọn biểu tượng dấu `+`</li>
+    <li>Điền tên</li>
+    <li>Điền địa chỉ IP</li>
+    <li>Chọn `Isolated virtual network` và ấn Finish</li>
+    </ul>
+  - Khi tạo máy ảo và kết nối tới private bridge, các máy ảo sẽ được cấp phát địa chỉ theo dải IP mà người dùng chọn. Chúng có thể giao tiếp 
+  với nhau những không đi ra được internet.
