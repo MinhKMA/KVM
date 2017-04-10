@@ -207,8 +207,9 @@ Nếu bạn đã quen với VMWare, chắc hẳn bạn sẽ biết trong VMWare 
 
   <img src="https://raw.githubusercontent.com/nguyenminh12051997/meditech-thuctap/master/MinhNV/KVM/images/natdhcp.PNG">
 
-  - Các card mạng của máy ảo sẽ được gắn vào 1 bridge mặc định (vibr0), bridge này đã có gateway mặc định, các gói tin của máy ảo sẽ đi qua
-  bridge này trước khi được chuyển tới bridge có kết nối từ card mạng thật để ra ngoài internet.
+  - Các card mạng của máy ảo sẽ được gắn vào 1 bridge mặc định (vibr0), bridge này đã có gateway mặc định, các gói tin của máy ảo sẽ đi qua bridge này trước khi được chuyển tới bridge có kết nối từ card mạng thật để ra ngoài internet.
+  
+  - KVM sẽ cấp DHCP cho các máy dùng chế độ NAT theo dải mặc định, người dùng có thể xem tại file `/var/lib/libvirt/network/default.xml`
 
   #### 2. Public Bridge
 
@@ -224,8 +225,9 @@ Nếu bạn đã quen với VMWare, chắc hẳn bạn sẽ biết trong VMWare 
     <li>Khởi động lại dịch vụ mạng</li>
     </ul>
 
-  - Sau khi đã cấu hình public bridge, khi tạo máy ảo, bạn chỉ cần chọn chế độ "Bridge br0" là các máy ảo sẽ tự động được nhận các địa chỉ 
-   ip trùng với dải địa chỉ của card vật lí.
+  - Sau khi đã cấu hình public bridge, khi tạo máy ảo, bạn chỉ cần chọn chế độ "Bridge br0" là các máy ảo sẽ tự động được nhận các địa chỉ ip trùng với dải địa chỉ của card vật lí.
+  
+  - Cơ chế cấp DHCP cho các máy ảo sẽ do Router bên ngoài đảm nhận, nhờ vậy nên các VM mới có dải địa chỉ ip trùng với card vật lí bên ngoài.
 
    #### 3. Private Bridge
 
@@ -244,3 +246,12 @@ Nếu bạn đã quen với VMWare, chắc hẳn bạn sẽ biết trong VMWare 
     </ul>
   - Khi tạo máy ảo và kết nối tới private bridge, các máy ảo sẽ được cấp phát địa chỉ theo dải IP mà người dùng chọn. Chúng có thể giao tiếp 
   với nhau những không đi ra được internet.
+  
+ - Một máy ảo có thể được kết nối tới nhiều các private bridge, nhờ vậy nó có thể giao tiếp với nhau.
+ 
+ Mô hình:
+ 
+ <img src="http://i.imgur.com/C3FojzR.png">
+ 
+ Nhờ việc gán nhiều card mạng mà VM ở dải 20.0.0.0 có thể ping tới máy ở dải 10.0.0.0
+
