@@ -12,6 +12,9 @@
 
 ---
 
+### Mô hình
+
+<img src="http://i.imgur.com/ZQnnxHr.png">
 
 
 ### <a name ="virt-install"> 1. Cài máy ảo bằng virt-install </a>
