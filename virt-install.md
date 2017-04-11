@@ -9,9 +9,9 @@
 ### [III. Hướng dẫn cài máy ảo bằng virt-install](#huong-dan)
 
 <ul>
-<li>[1. Cài máy ảo bằng file image](image)</li>
-<li>[2. Cài máy ảo bằng file ISO](iso)</li>
-<li>[3. Cài máy ảo bằng cách tải file từ trên internet](internet)</li>
+<li>[1. Cài máy ảo bằng file image](#image)</li>
+<li>[2. Cài máy ảo bằng file ISO](#iso)</li>
+<li>[3. Cài máy ảo bằng cách tải file từ trên internet](#internet)</li>
 </ul>
 
 ----
@@ -55,12 +55,19 @@
 Một số đường dẫn tham khảo:
 
 Fedora/Red Hat Based
+
 http://download.fedoraproject.org/pub/fedora/linux/releases/10/Fedora/i386/os/
+
 Debian/Ubuntu
+
 http://ftp.us.debian.org/debian/dists/etch/main/installer-amd64/
+
 Suse
+
 http://download.opensuse.org/distribution/11.0/repo/oss/
+
 Mandriva
+
 ftp://ftp.uwsg.indiana.edu/linux/mandrake/official/2009.0/i586/
 
 - `--pxe` : Sử dụng giao thức boot PXE để tiến hành cài đặt máy ảo
