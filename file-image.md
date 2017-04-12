@@ -28,6 +28,7 @@
 
 - Là định dạng file image phi cấu trúc
 - Khi người dùng tạo mới một máy ảo có disk format là raw thì dung lượng của file disk sẽ đúng bằng dung lượng của ổ đĩa máy ảo bạn đã tạo.
+- Định dạng raw là hình ảnh theo dạng nhị phân (bit by bit) của ổ đĩa.
 - Mặc định khi tạo máy ảo với virt-manager hoặc không khai báo khi tạo VM bằng virt-install thì định dạng ổ đĩa sẽ là raw. Hay nói cách khác, raw chính là định dạng mặc định của QEMU.
 
 **2.3 File qcow2**
