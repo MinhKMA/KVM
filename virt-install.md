@@ -110,16 +110,16 @@ ubuntuhardy : Ubuntu 8.04 LTS (Hardy Heron)
   Format chung: `--disk tuychon1=giatri1,tuychon2=giatri2,...`
 - Các tùy chọn đi kèm với `--disk`:
   <ul>
-  <li> ` path`:  Đường dẫn tới nơi dùng để chứa dữ liệu, thông thường đây là nơi chưa có dữ liệu, KVM sẽ tạo 1 storage mới.</li>
-  <li>` pool` : Một pool (nơi chứa các storage) của libvirt đã được tạo sẵn, tại đây, KVM có thể tạo các storage mới. Tùy chọn ` size` là bắt buộc</li>
-  <li>` device` : Loại ổ đĩa  </li>
-  <li>` bus` : Loại bus, có thể là ` ide`, ` scsi`, ` usb`, ` virtio` hoặc `xen`</li>
-  <li>` perms` : Quyền truy cập ổ đĩa. Mặc định là ` rw`(Read/Write). Một số tùy chọn khác là ` ro` (Readonly) và ` sh` (Shared Read/Write)</li>
-  <li>` sparse` : Liệu có bỏ qua việc phân bố toàn bộ dung lượng của storage mới hay không. Người dùng có thể chọn ` true` hoặc ` false`. Mặc định sẽ là `true`</li>
-  <li>` cache`: Chế độ bộ nhớ cache được sử dụng, người dùng có thể chọn ` none`, ` writethrough` hoặc ` writeback`</li>
-  <li>` format` : Định dạng file được dùng nếu tạo ổ đĩa, một số định dạng thông dụng là `raw`, `qcow2`, ` vmdk`, ...</li>
-  <li>` error_policy` : Những hành động mà máy ảo có thể làm trong trường hợp ghi lỗi. Người dùng có thể chọn ` none`, ` stop` hoặc ` enospace`</li>
-  <li>` serial`: Số seri của ổ đĩa ảo</li>
+  <li> "path" :  Đường dẫn tới nơi dùng để chứa dữ liệu, thông thường đây là nơi chưa có dữ liệu, KVM sẽ tạo 1 storage mới.</li>
+  <li> "pool" : Một pool (nơi chứa các storage) của libvirt đã được tạo sẵn, tại đây, KVM có thể tạo các storage mới. Tùy chọn "size" là bắt buộc</li>
+  <li> "device" : Loại ổ đĩa  </li>
+  <li> "bus" : Loại bus, có thể là "ide", "scsi", "usb", "virtio" hoặc "xen"</li>
+  <li> "perms" : Quyền truy cập ổ đĩa. Mặc định là "rw"(Read/Write). Một số tùy chọn khác là "ro" (Readonly) và "sh" (Shared Read/Write)</li>
+  <li> "sparse" : Liệu có bỏ qua việc phân bố toàn bộ dung lượng của storage mới hay không. Người dùng có thể chọn "true" hoặc "false". Mặc định sẽ là "true"</li>
+  <li> "cache": Chế độ bộ nhớ cache được sử dụng, người dùng có thể chọn "none", "writethrough" hoặc "writeback"</li>
+  <li> "format" : Định dạng file được dùng nếu tạo ổ đĩa, một số định dạng thông dụng là "raw", "qcow2", "vmdk", ...</li>
+  <li> "error_policy" : Những hành động mà máy ảo có thể làm trong trường hợp ghi lỗi. Người dùng có thể chọn "none", "stop" hoặc "enospace"</li>
+  <li> "serial": Số seri của ổ đĩa ảo</li>
   </ul>
   
 - `--filesystem` : Thư mục trên máy chủ được dùng để lưu trữ máy ảo
@@ -141,9 +141,9 @@ Một vài tùy chọn khác có thể dùng đi kèm đó là `model` và `mac`
 - **Các tùy chọn đồ họa**
 - `--graphics` : Đi kèm với các tùy chọn sau
   <ul>
-  <li>` type`: Loại đồ họa. Có thể chọn `vnc` hoặc ` sdl`, ` spice` và ` none` </li>
-  <li>` port`: nếu người dùng sử dụng vnc hoặc spice thì sẽ phải khai báo port cố định cho dịch vụ này</li>
-  <li>Một vài tùy chọn khác như ` listen`, ` password`</li>
+  <li> "type": Loại đồ họa. Có thể chọn "vnc" hoặc "sdl", "spice" và "none" </li>
+  <li> "port": nếu người dùng sử dụng vnc hoặc spice thì sẽ phải khai báo port cố định cho dịch vụ này</li>
+  <li>Một vài tùy chọn khác như "listen", "password"</li>
   </ul>
   
 - **Các tùy chọn ảo hóa**
