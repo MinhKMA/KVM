@@ -54,7 +54,7 @@
 - Để chuyển đổi từ định dạng raw sang qcow 2, ta dùng câu lệnh: 
   `qemu-img convert -f raw -O qcow2 /var/lib/libvirt/images/VM.img /var/lib/libvirt/images/VM.qcow2`
 
-- Sau khi chuyển đổi, tiến hành shutdown máy ảo. Đồng thời, sửa file xml của VM trong thư mục /etc/libvirt/qemu
+- Sau khi chuyển đổi, tiến hành shutdown máy ảo. Đồng thời, sửa file xml của VM bằng câu lệnh `virsh edit VMname`
 
 <img src="http://i.imgur.com/MW1I0IG.png">
 
