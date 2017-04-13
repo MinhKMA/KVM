@@ -29,15 +29,15 @@
 
   ```sh
   sudo virt-install \
-        -n VM01 \
-        -r 128 \
-         --vcpus 1 \
-        --os-variant=generic \
-        --disk path=/var/lib/libvirt/images/linux-microcore 3.8.2.img,format=qcow2,bus=virtio,cache=none \
-        --network network=br0 \
-        --hvm --virt-type kvm \
-        --vnc --noautoconsole \
-        --import
+      -n VM01 \
+      -r 128 \
+       --vcpus 1 \
+      --os-variant=generic \
+      --disk path=/var/lib/libvirt/images/linux-microcore-3.8.2.img,format=qcow2,bus=virtio,cache=none \
+      --network bridge=br0 \
+      --hvm --virt-type kvm \
+      --vnc --noautoconsole \
+      --import
   ```
 
   ​
