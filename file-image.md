@@ -94,11 +94,14 @@ Như vậy, file qcow2 được chuyển đổi đã "nén" dữ liệu theo cơ
   <li>Tiến hành đo bằng câu lệnh "dd if= /source of=test01 bs=8k count=250000". Trong đó "if" là thư mục muốn đo, "of" là thư mục đích tuy nhiên ở đây ta chỉ muốn đo tốc độ nên không cần, "bs" thể hiện quá trình đọc (ghi) bao nhiêu byte một lần đọc (ghi) và "count" cho biết máy sẽ thực hiện bao nhiêu Block trong quá trình thực thi câu lệnh.</li>
   <li>Ta thu được kết quả như sau:
   
+  
   <img src ="http://i.imgur.com/LXF3L0E.png">
+  
   
   Như vậy, file raw sẽ cho tốc độ tốt hơn so với file qcow2.
   
   </li>
+  
   </ul>
   
 - Tiến hành tạo thử snapshot trên định dạng ổ đĩa qcow2 bằng câu lệnh `virsh snapshot-create VMname`
