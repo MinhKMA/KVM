@@ -92,6 +92,7 @@ Như vậy, file qcow2 được chuyển đổi đã "nén" dữ liệu theo cơ
   <ul>
   <li>"dd" là một câu lệnh trong linux thường được sử dụng với mục đích sao lưu và phục hồi dữ liệu của ổ cứng</li>
   <li>Tiến hành đo bằng câu lệnh "dd if= /source of=test01 bs=8k count=250000". Trong đó "if" là thư mục muốn đo, "of" là thư mục đích tuy nhiên ở đây ta chỉ muốn đo tốc độ nên không cần, "bs" thể hiện quá trình đọc (ghi) bao nhiêu byte một lần đọc (ghi) và "count" cho biết máy sẽ thực hiện bao nhiêu Block trong quá trình thực thi câu lệnh.</li>
+  
   <li>Ta thu được kết quả như sau:
   
   
@@ -99,6 +100,7 @@ Như vậy, file qcow2 được chuyển đổi đã "nén" dữ liệu theo cơ
   
   
   Như vậy, file raw sẽ cho tốc độ tốt hơn so với file qcow2.
+  
   
   </li>
   
