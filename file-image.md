@@ -8,6 +8,9 @@
 
 ### [3. Chuyển đổi giữa raw và qcow2](#chuyen-doi)
 
+### [4. So sánh performance giữa hai định dạng ổ đĩa và ứng dụng của từng loại trong thực tiễn](#so-sanh)
+
+
 ---
 
 ### <a name = "tong-quan"> 1. Tổng quan về file image trong KVM </a>
@@ -51,15 +54,64 @@
 ### <a name ="chuyen-doi"> 3. Chuyển đổi giữa raw và qcow2 </a>
 
 
-- Để chuyển đổi từ định dạng raw sang qcow 2, ta dùng câu lệnh: 
+- Để chuyển đổi từ định dạng raw sang qcow2, ta dùng câu lệnh: 
   `qemu-img convert -f raw -O qcow2 /var/lib/libvirt/images/VM.img /var/lib/libvirt/images/VM.qcow2`
+  
+- Để chuyển đổi từ định dạng qcow2 sang raw, ta dùng câu lệnh: 
+  `qemu-img convert -f qcow2 -O raw /var/lib/libvirt/images/VM.qcow2 /var/lib/libvirt/images/VM.raw`
+  
 
 - Sau khi chuyển đổi, tiến hành shutdown máy ảo. Đồng thời, sửa file xml của VM bằng câu lệnh `virsh edit VMname`
 
 <img src="http://i.imgur.com/MW1I0IG.png">
 
-- Tiến hành khởi động máy ảo và kiểm tra dung lượng của 2 ổ đĩa này bằng câu lệnh `du`
+- Tiến hành khởi động máy ảo. Lưu ý rằng file bạn muốn chuyển đổi sẽ không bị mất đi, bạn phải tiến hành xóa bỏ nó bằng tay.
 
-<img src="http://i.imgur.com/0mB0bU9.png">
 
-- Như vậy, file qcow2 được chuyển đổi đã "nén" dữ liệu theo cơ chế thin provisioning, nhờ thế nó chiếm ít bộ nhớ hơn so với định rạng raw. 
+### <a name = "so-sanh"> 4. So sánh performance giữa hai định dạng ổ đĩa và ứng dụng của từng loại trong thực tiễn </a>
+
+**Tình huống cụ thể**
+
+- Test performance của 2 ổ cứng định dạng file raw và qcow2 để chứng thực việc định dạng raw cho performance tốt hơn so với qcow2 và qcow2 cho phép một vài tính năng nổi trội hơn so với định dạng raw.
+
+**Phương pháp test**
+
+- Đối với test performance, ta dùng câu lệnh "dd".
+
+- Đối với việc chứng thực một số tính năng đặc biệt như snapshot, nén dung lượng...tôi sẽ tạo snapshot trên cả hai định dạng ổ đĩa và tiến hành đo dung lượng để so sánh.
+
+**Cách làm**
+
+- Đầu tiên, ta tiến hành khởi tạo 2 file với cùng dung lượng 10GB với định dạng raw và qcow2 và kiểm tra dung lượng.
+
+<img src = "http://i.imgur.com/1cHyGlw.png">
+
+Như vậy, file qcow2 được chuyển đổi đã "nén" dữ liệu theo cơ chế thin provisioning, nó chỉ chiếm dung lượng đúng bằng dung lượng data đang chứa trong nó. Trong khi đó, file raw sẽ mặc định chiếm đúng 1 khoảng mà người dùng khai báo trong storage pool của KVM.
+
+- Tiếp theo, tiến hành test performance bằng câu lệnh "dd":
+  <ul>
+  <li>"dd" là một câu lệnh trong linux thường được sử dụng với mục đích sao lưu và phục hồi dữ liệu của ổ cứng</li>
+  <li>Tiến hành đo bằng câu lệnh "dd if= /source of=test01 bs=8k count=250000". Trong đó "if" là thư mục muốn đo, "of" là thư mục đích tuy nhiên ở đây ta chỉ muốn đo tốc độ nên không cần, "bs" thể hiện quá trình đọc (ghi) bao nhiêu byte một lần đọc (ghi) và "count" cho biết máy sẽ thực hiện bao nhiêu Block trong quá trình thực thi câu lệnh.</li>
+  <li>Ta thu được kết quả như sau:
+  
+  <img src ="http://i.imgur.com/LXF3L0E.png">
+  
+  Như vậy, file raw sẽ cho tốc độ tốt hơn so với file qcow2.
+  
+  </li>
+  </ul>
+  
+- Tiến hành tạo thử snapshot trên định dạng ổ đĩa qcow2 bằng câu lệnh `virsh snapshot-create VMname`
+
+<img src="http://i.imgur.com/8XMZCSy.png">
+
+Snapshot đã được tạo thành công.
+Tiếp theo là tạo snapshot trên ổ đĩa raw.
+
+<img src="http://i.imgur.com/dar3WUU.png">
+
+Hệ thống báo lỗi do định dạng raw không support tính năng snapshot.
+
+**Ứng dụng thực tiễn**
+
+- Như vậy ta có thể thấy định dạng raw cho phép ổ đĩa có tốc độ tốt hơn nhưng lại không có một số tính năng nổi bật như snapshot, nén dung lượng...Trong khi đó, qcow2 cho tốc độ thấp nhưng nó cung cấp nhiều tiện ích mở rộng. Do vậy, raw thường được sử dụng nhiều hơn đối với những hệ thống yêu cầu chạy các ứng dụng liên tục. `qcow2` thường được ưu tiên hơn trong các trường hợp còn lại.
