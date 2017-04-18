@@ -203,6 +203,16 @@ Lúc này ổ đĩa cũ đã biến thành trạng thái `read-only`, VM dùng �
   <li>blockpull : Hợp nhất dữ liệu với ổ đĩa được tạo ra khi snapshot. Ổ đĩa sau khi hợp nhất sẽ luôn có định dạng qcow2.</li>
   </ul>
 
+- Hợp nhất sử dụng `blockcommit` : 
+  <ul>
+  <li>Kiểm tra ổ đĩa hiện tại mà máy ảo sử dụng bằng câu lệnh "virsh domblklist VM1"</li>
+  <li>Xem thông tin backing file của ổ đĩa đang được sử dụng bằng câu lệnh "qemu-img info --backing-chain /vmstore1/vm1.snap4 | grep backing"</li>
+  <li>Hợp nhất snapshot bằng câu lệnh "virsh blockcommit VM1 hda --verbose --pivot --active" . Lưu ý đối với ubuntu, chỉ bản 16.04 mới hỗ trợ câu lệnh này</li>
+  <li>Check lại ổ đĩa đang sử dụng bằng câu lệnh "virsh domblklist VM1"</li>
+  <li>Kiểm tra lại danh sách các snapshot bằng câu lệnh "virsh snapshot-list VM1"</li>
+  <li>Xóa snapshot bằng câu lệnh "virsh snapshot-delete VM1 snap1 --children --metadata"</li>
+  </ul>
+
 - Hợp nhất sử dụng `blockpull`: 
 
  - Xem ổ đĩa hiện tại máy ảo đang sử dụng:
