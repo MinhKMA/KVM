@@ -6,14 +6,6 @@
 
 ### [II. Các options khi tạo máy ảo với virt-install](#option)
 
-### [III. Hướng dẫn cài máy ảo bằng virt-install](#huong-dan)
-
-<ul>
-<li>[1. Cài máy ảo bằng file image](#image)</li>
-<li>[2. Cài máy ảo bằng file ISO](#iso)</li>
-<li>[3. Cài máy ảo bằng cách tải file từ trên internet](#internet)</li>
-</ul>
-
 ----
 
 ### <a name = "gioi-thieu"> I. Giới thiệu câu lệnh virt-install </a>
@@ -161,6 +153,4 @@ Một vài tùy chọn khác có thể dùng đi kèm đó là `model` và `mac`
 - `--force`
 - `--check-cpu`
 - `-q` hoặc `--quiet`
-
-### <a name ="huong-dan"> III. Hướng dẫn cài máy ảo bằng virt-install </a>
 
