@@ -8,7 +8,7 @@
 
 #### [1.2 Hướng dẫn tạo và quản lí template](#create-template)
 
-###[2. Hướng dẫn tạo Snapshot](#snapshot)
+### [2. Hướng dẫn tạo Snapshot](#snapshot)
 
 #### [2.1 Hướng dẫn tạo và quản lí Internal Snapshot](#internal)
 
@@ -198,8 +198,10 @@ Lúc này ổ đĩa cũ đã biến thành trạng thái `read-only`, VM dùng �
 
 - Quy trình xóa một external snapshot khá phức tạp. Để có thể xóa, trước tiên bạn phải tiến hành hợp nhất nó với ổ đĩa cũ. Có hai kiểu hợp nhất đó là:
 
- - blockcommit: Hợp nhất dữ liệu với ổ đĩa cũ.
- - blockpull : Hợp nhất dữ liệu với ổ đĩa được tạo ra khi snapshot. Ổ đĩa sau khi hợp nhất sẽ luôn có định dạng qcow2.
+  <ul>
+  <li>blockcommit: Hợp nhất dữ liệu với ổ đĩa cũ.</li>
+  <li>blockpull : Hợp nhất dữ liệu với ổ đĩa được tạo ra khi snapshot. Ổ đĩa sau khi hợp nhất sẽ luôn có định dạng qcow2.</li>
+  </ul>
 
 - Hợp nhất sử dụng `blockpull`: 
 
