@@ -1,4 +1,4 @@
-# Hướng dẫn tạo máy ảo trên KVM bằng câu lệnh virt-install
+# Tìm hiểu câu lệnh virt-install
 
 ## Mục lục
 
