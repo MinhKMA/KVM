@@ -86,13 +86,13 @@
 
 <img src="http://i.imgur.com/WwmApHY.png">
 
-- Dùng `virt-clone` để tạo ra máy ảo mới từ file XML và image đã được backup: `virt-clone --original-xml=/root/Template_VM02.xml -f /var/lib/libvirt/images/vm2.qcow2 -n Ubuntu --preserve-data`
+- Dùng `virt-clone` để tạo ra máy ảo mới từ file XML và image đã được backup: `virt-clone --original-xml=/root/file.xml -f /var/kvm/images/vm1.qcow2 -n Ubuntu-01 --preserve-data`
 
-<img src="">
+<img src="http://i.imgur.com/NhFTaSw.png">
 
 - Sử dụng câu lệnh `virsh list --all` để kiểm tra xem máy ảo đã được define hay chưa.
 
-<img src="">
+<img src="http://i.imgur.com/wkK35wN.png">
 
 - Tiến hành download 1 số thứ rồi kiểm ta dung lượng. Máy ảo được tạo ra sẽ có dung lượng file image đúng bằng dung lượng file bạn vừa down. Cơ chế hoạt động giống như Thin Provisioning giúp tiết kiệm bộ nhớ tuy nhiên nếu file template bị remove, các máy ảo tạo từ nó cũng sẽ không thể chạy được nữa.
 
